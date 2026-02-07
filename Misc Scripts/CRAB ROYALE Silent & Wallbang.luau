@@ -1,7 +1,3 @@
---[[
-        Made by @kylosilly on discord
-    Game: https://www.roblox.com/games/17021140013/CRAB-ROYALE
-]]
 local replicated_storage = game:GetService("ReplicatedStorage");
 local user_input_service = game:GetService("UserInputService");
 local run_service = game:GetService("RunService");
