@@ -1,18 +1,26 @@
-EspHandler = {
-    EspCache = {}
-}
-
-EspHandler.__index = EspHandler;
+-- Inside EspLibrary.luau on GitHub
+EspHandler = {} -- No 'local' keyword so it becomes global
+EspHandler.EspCache = {}
+EspHandler.__index = EspHandler
 
 function EspHandler:Add(Folder: Folder)
-    if (not Folder.ClassName == "Folder") then
-        return notify("Error", "To add an object to esp make sure the path ends with a folder to get everything inside", 3)
+    -- Use ~= to avoid the 'not' priority bug
+    if typeof(Folder) ~= "Instance" or not Folder:IsA("Folder") then
+         -- You can call global UI:Notify here if the UI library is loaded!
+         print("Error: Path must end with a folder")
+         return 
     end
-    if (not self.EspCache[Folder.Name]) then
-        self.EspCache[Folder.Name] = Folder
+
+    if not self.EspCache[Folder.Name] then
+        -- Creating the table as requested
+        self.EspCache[Folder.Name] = {
+            Instance = Folder,
+            Objects = {}
+        }
+        print("Table created for: " .. Folder.Name)
     end
 end
 
 function EspHandler:Test(Text: string)
-    return print(Text)
+    print("EspHandler Test: " .. Text)
 end
