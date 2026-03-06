@@ -1,6 +1,6 @@
-local HttpService = game:GetService("HttpService")
-
 loadstring(game:HttpGet("https://raw.githubusercontent.com/zee-7654/UI/refs/heads/main/UI.lua"))()
+
+local HttpService = game:GetService("HttpService")
 
 local function GetScripts()
     local Files = {}
@@ -51,6 +51,7 @@ LoaderSection:Button({ Title = "Load Script" }, function()
     if (Selected == "") then
         return print("Select a script before trying this again")
     end
+    notify("Femboy.Rawr", `Loading {Selected}...`, 2)
     loadstring(game:HttpGet(`https://raw.githubusercontent.com/kylosilly/Femboy.Rawr/main/Matcha/{Selected}.luau`))()
     Window:Unload()
 end)
