@@ -1,8 +1,8 @@
 local Camera = game:GetService("Workspace").CurrentCamera
 
-EspHandler = {}
-EspHandler.EspCache = {}
-EspHandler.__index = EspHandler
+EspUtility = {}
+EspUtility.EspCache = {}
+EspUtility.__index = EspUtility
 
 local HandlerUtility = {}; do
     function HandlerUtility:Magnitude(Position1: Vector3, Position2: Vector3)
@@ -17,13 +17,14 @@ local HandlerUtility = {}; do
     end
 end
 
-function EspHandler:Add(CreationData: table)
+function EspUtility:Add(CreationData: table)
     local Path = CreationData.Path
     if (not Path) or (Path.ClassName ~= "Folder" and Path.ClassName ~= "Workspace") then
         return warn("To add something make sure the path ends with an folder or workspace")
     end
 
     local Color = CreationData.Color or Color3.new(1, 1, 1)
+    local CustomName = CreationData.CustomName
 
     if (not self.EspCache[Path.Name]) then
         self.EspCache[Path.Name] = {}
@@ -45,7 +46,7 @@ function EspHandler:Add(CreationData: table)
         end
 
         do
-            Name.Text = CreationData.CustomName or Instance.Name
+            Name.Text = CustomName or Instance.Name
             Name.Outline = true
             Name.Center = true
             Name.Color = Color
@@ -53,6 +54,8 @@ function EspHandler:Add(CreationData: table)
         end
 
         self.EspCache[Path.Name][InstanceAddress] = {
+            CustomColor = Color or Color3.new(1, 1, 1),
+            CustomName = CustomName,
             Distance = Distance,
             Parent = Instance,
             Name = Name
@@ -60,9 +63,59 @@ function EspHandler:Add(CreationData: table)
     end
 end
 
-function EspHandler:Update()
+function EspUtility:ClearEsp(EspTable: table)
+    for _, Drawing in (EspTable) do
+        if (type(Drawing) == "table") then
+            self:ClearEsp(Drawing)
+        end
+        if (not Drawing.ClassName) and (Drawing.Remove) then
+            Drawing:Remove()
+        end
+    end
+end
+
+function EspUtility:Update()
     for _, EspTable in (self.EspCache) do
-        for _, Drawing in (EspTable) do
+        for _, Instance in (EspTable.Parent:GetChildren()) do
+            if (not EspTable[Parent.Address]) then
+                local Color = EspTable.CustomColor or Color3.new(1, 1, 1)
+                local Distance = Drawing.new("Text")
+                local Name = Drawing.new("Text")
+
+                do
+                    Distance.Outline = true
+                    Distance.Center = true
+                    Distance.Color = Color
+                    Distance.Size = 12
+                end
+
+                do
+                    Name.Text = EspTable.CustomName or Instance.Name
+                    Name.Outline = true
+                    Name.Center = true
+                    Name.Color = Color
+                    Name.Size = 12
+                end
+
+                EspTable[Instance.Address] = {
+                    CustomColor = Color or Color3.new(1, 1, 1),
+                    CustomName = CustomName,
+                    Distance = Distance,
+                    Parent = Instance,
+                    Name = Name
+                }
+            end
+        end
+    end
+    
+    for _, EspTable in (self.EspCache) do
+        for Address, Drawing in (EspTable) do
+            if (not Drawing.Parent) then
+                EspUtility:ClearEsp(Drawing)
+                EspTable[Address] = nil
+                continue
+            end
+
             local Root
 
             if (Drawing.Parent.ClassName == "Model") then
@@ -95,6 +148,6 @@ function EspHandler:Update()
 end
 
 while (true) do
-    EspHandler:Update()
+    EspUtility:Update()
     task.wait()
 end
