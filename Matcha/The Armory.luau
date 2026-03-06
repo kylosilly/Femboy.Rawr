@@ -109,10 +109,6 @@ end
 
 task.spawn(function()
     while (_G.Running) do
-        if (not _G.Running) then
-            break
-        end
-        
         for _, SpawnedCrate in (SpawnedCrates:GetChildren()) do
             if (not EspCache["SpawnedCrates"][SpawnedCrate.Address]) then
                 EspUtility:AddCrate(SpawnedCrate)
