@@ -67,7 +67,7 @@ function EspHandler:Update()
 
             if (Drawing.Parent.ClassName == "Model") then
                 Root = Drawing.Parent.PrimaryPart
-            else
+            elseif (Drawing.Parent.ClassName ~= "Camera") then
                 Root = Drawing.Parent
             end
 
