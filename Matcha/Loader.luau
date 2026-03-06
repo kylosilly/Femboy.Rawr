@@ -49,7 +49,7 @@ local SelectorDropdown = LoaderSection:Dropdown({
 LoaderSection:Button({ Title = "Load Script" }, function()
     local Selected = SelectorDropdown:Get()
     if (Selected == "") then
-        return print("Select a script before trying this again")
+        return notify("Femboy.Rawr", "Please select a script to load before using", 2)
     end
     notify("Femboy.Rawr", `Loading {Selected}...`, 2)
     loadstring(game:HttpGet(`https://raw.githubusercontent.com/kylosilly/Femboy.Rawr/main/Matcha/{Selected}.luau`))()
