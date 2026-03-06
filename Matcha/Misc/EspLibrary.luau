@@ -85,7 +85,7 @@ function EspHandler:Update()
                 continue
             end
 
-            DistanceText.Text = `{HandlerUtility:Magnitude(Camera.CFrame.Position, Root.Position)}m`
+            DistanceText.Text = `{HandlerUtility:Magnitude(Camera.Position, Root.Position)}m`
             DistanceText.Position = Vector2.new(ScreenPosition.X, ScreenPosition.Y + 12)
             NameText.Position = Vector2.new(ScreenPosition.X, ScreenPosition.Y)
             DistanceText.Visible = true
