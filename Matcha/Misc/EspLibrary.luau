@@ -17,7 +17,7 @@ end
 
 function EspHandler:Add(CreationData: table)
     local Path = CreationData.Path
-    if (not Path) or (Path.ClassName ~= "Folder") or (Path.ClassName ~= "Workspace") then
+    if (not Path) or (not Path.ClassName == "Folder") or (not Path.ClassName == "Workspace") then
         return warn("To add something make sure the path ends with an folder or workspace")
     end
 
