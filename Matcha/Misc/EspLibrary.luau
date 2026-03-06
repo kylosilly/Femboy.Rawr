@@ -1,3 +1,5 @@
+local Camera = game:GetService("Workspace").CurrentCamera
+
 EspHandler = {}
 EspHandler.EspCache = {}
 EspHandler.__index = EspHandler
