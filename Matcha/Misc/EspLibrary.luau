@@ -71,7 +71,7 @@ function EspHandler:Update()
                 Root = Drawing.Parent
             end
 
-            if (not Root) then
+            if (not Root) or (not Root.Position) then
                 continue
             end
 
