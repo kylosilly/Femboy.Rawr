@@ -22,7 +22,6 @@ function EspHandler:Add(CreationData: table)
     end
 
     local Color = CreationData.Color or Color3.new(1, 1, 1)
-    Path = CreationData.Path
 
     if (not self.EspCache[Path.Name]) then
         self.EspCache[Path.Name] = {}
