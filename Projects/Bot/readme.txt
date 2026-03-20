@@ -1,6 +1,6 @@
 Tutorial on how to use:
 1. Install latest LTS version of https://nodejs.org/en
-2. Insert missing information to run but in .env file [Webhook, Bot Token, Bot Token Id]
+2. Insert missing information to run put in .env file [Webhook, Bot Token, Bot Token Id]
 
 After that it should work
 
