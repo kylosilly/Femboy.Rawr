@@ -182,4 +182,4 @@ window:SetBackground("123456789") -- if you turned on assets set the background 
 window:SetTileOffset(100)
 window:SetTileScale(0.5) -- on how large background asset should be
 window:SetBackgroundColor(Color3.fromRGB(40, 40, 40))
-window:SetBackgroundTransparency(0.5) -- on how transparent background should be for asset
+window:SetBackgroundTransparency(0.5) -- transparancy background should be for asset
