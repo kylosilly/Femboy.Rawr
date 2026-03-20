@@ -1,11 +1,12 @@
-local router_client = require(game:GetService("ReplicatedStorage"):WaitForChild("Fsys")).load("RouterClient");
+local RouterClient = require(game:GetService("ReplicatedStorage"):WaitForChild("Fsys")).load("RouterClient")
 
-for index = 1, #debug.getupvalues(router_client.init) do
-    local remotes = debug.getupvalue(router_client.init, index);
-    if (type(remotes) == "table") then
-        for remote_name, remote in (remotes) do
-            if (typeof(remote) == "Instance") and (remote:IsA("RemoteEvent") or remote:IsA("RemoteFunction")) then
-                remote.Name = remote_name;
+for Index = 1, #debug.getupvalues(RouterClient.init) do
+    local Remotes = debug.getupvalue(RouterClient.init, Index)
+    
+    if (type(Remotes) == "table") then
+        for OriginalName, Remote in (Remotes) do
+            if (typeof(Remote) == "Instance") and (Remote:IsA("RemoteEvent") or Remote:IsA("RemoteFunction")) then
+                Remote.Name = OriginalName
             end
         end
     end
