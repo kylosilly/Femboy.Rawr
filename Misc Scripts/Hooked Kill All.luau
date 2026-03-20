@@ -1,4 +1,4 @@
--- made by @kylosilly if you use this in lobby you wont earn kills/coins off it
+-- if you use this in lobby you wont earn kills/coins off it
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Workspace = game:GetService("Workspace")
 local Players = game:GetService("Players")
