@@ -20,7 +20,7 @@ end
 local Window = UI:Window({
 	Title = "Femboy.Rawr Loader",
 	Size = Vector2.new(700, 500),
-	Flags = {},
+	Flags = {}
 })
 
 local LoaderTab = Window:Tab({ Title = "Loader" })
