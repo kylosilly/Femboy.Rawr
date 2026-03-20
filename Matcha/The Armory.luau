@@ -18,7 +18,7 @@ local EspCache = {
 local Window = UI:Window({
 	Title = "Femboy.Rawr | The Armory",
 	Size = Vector2.new(700, 500),
-	Flags = {},
+	Flags = {}
 })
 
 local EspUtility = {}; do
