@@ -12,7 +12,7 @@ local framework_modules = framework.modules;
 
 if (not IB_OBFUSCATED) then
 	getfenv().IB_NO_VIRTUALIZE = function(...)
-		return (...);
+		return ...;
 	end
 end
 
