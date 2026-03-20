@@ -13,11 +13,6 @@ local shove = filtergc("function", {
 
 local weapon_manager = require(replicated_storage.Common.Managers.WeaponManager);
 
-weapon_manager.Constants.DEFAULT_PISTOL_RELOAD_TIME = 0;
-weapon_manager.Constants.DEFAULT_PISTOL_FIRERATE = 500;
-weapon_manager.Constants.DEFAULT_RELOAD_TIME = 0;
-weapon_manager.Constants.DEFAULT_MAGAZINE = 9e9;
-
 local silent_fov, current_target = 500, nil;
 
 local silent_aim_fov_outline = Drawing.new("Circle");
