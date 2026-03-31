@@ -15,10 +15,26 @@ local EspCache = {
     ["Hatches"] = {}
 }
 
+local RarityData = {
+    [1] = "Common",
+    [2] = "Uncommon",
+    [3] = "Rare",
+    [4] = "Epic",
+    [5] = "Legendary"
+}
+
+local Rarities = {
+    "Common",
+    "Uncommon",
+    "Rare",
+    "Epic",
+    "Legendary"
+}
+
 local Window = UI:Window({
 	Title = "Femboy.Rawr | The Armory",
 	Size = Vector2.new(700, 500),
-	Flags = {}
+	Flags = {},
 })
 
 local EspUtility = {}; do
@@ -128,9 +144,16 @@ task.spawn(function()
                 continue
             end
 
-            local ScreenPosition, OnScreen = WorldToScreen(CrateData.Root.Position)
             local DistanceText = CrateData.Distance
             local NameText = CrateData.Name
+
+            if (not table.find(Window.Flags.SelectedRarites or { "Common" }, RarityData[CrateData.Root.Parent:GetAttribute("Rarity")])) then
+                DistanceText.Visible = false
+                NameText.Visible = false
+                continue
+            end
+
+            local ScreenPosition, OnScreen = WorldToScreen(CrateData.Root.Position)
 
             if (not OnScreen) then
                 DistanceText.Visible = false
@@ -214,6 +237,10 @@ end)
 
 Sections.CrateEsp:Checkbox({ Title = "Distance" }, function(Value)
     Window.Flags.CrateDistance = Value
+end)
+
+Sections.CrateEsp:MultiDropdown({ Title = "Rarities To Show:", Options = Rarities, Default = { "Common" } }, function(Value)
+    Window.Flags.SelectedRarites = Value
 end)
 
 Sections.SpawnedEsp:Checkbox({ Title = "Name" }, function(Value)
