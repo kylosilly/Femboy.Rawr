@@ -70,7 +70,7 @@ local EspUtility = {}; do
 
         local NodeData = NodeData[Node.Name]
 
-        local NodeColor = NodeData.Color
+        local NodeColor = NodeData.Color or Color3.new(1, 1, 1)
 
         Distance.Color = NodeColor
         Distance.Outline = true
