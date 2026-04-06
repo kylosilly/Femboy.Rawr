@@ -142,6 +142,11 @@ task.spawn(function()
 
             local RootPosition = Root.Position
 
+            if (not RootPosition) then
+                EspUtility:ClearEsp(Data)
+                continue
+            end
+
             local ScreenPosition, OnScreen = WorldToScreen(RootPosition)
 
             if (not OnScreen) then
@@ -181,6 +186,11 @@ task.spawn(function()
             end
 
             local RootPosition = Root.Position
+
+            if (not RootPosition) then
+                EspUtility:ClearEsp(Data)
+                continue
+            end
 
             local ScreenPosition, OnScreen = WorldToScreen(RootPosition)
 
