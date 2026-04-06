@@ -58,7 +58,7 @@ local EspUtility = {}; do
         Name.Size = 12
 
         Cache["DroppedItems"][Item.Address] = {
-            Root = Item:FindFirstChild("Main"),
+            Root = Item:FindFirstChild("Main") or Item:FindFirstChild("Handle"),
             Distance = Distance,
             Name = Name
         }
@@ -255,7 +255,7 @@ Sections.Dropped:Checkbox({ Title = "Distance" }, function(Value)
     Window.Flags.DroppedDistance = Value
 end)
 
-Sections.Settings:Keybind({ Title = "Toggle Window", Key = Enum.KeyCode.Q }, function()
+Sections.Settings:Keybind({ Title = "Toggle Window", Key = Enum.KeyCode.X }, function()
 	Window:Toggle()
 end)
 
