@@ -142,7 +142,7 @@ task.spawn(function()
 
             local RootPosition = Root.Position
 
-            local ScreenPosition, OnScreen = WorldToScreen(Root.Position)
+            local ScreenPosition, OnScreen = WorldToScreen(RootPosition)
 
             if (not OnScreen) then
                 EspUtility:HideDrawing(Data)
@@ -182,7 +182,7 @@ task.spawn(function()
 
             local RootPosition = Root.Position
 
-            local ScreenPosition, OnScreen = WorldToScreen(Root.Position)
+            local ScreenPosition, OnScreen = WorldToScreen(RootPosition)
 
             if (not OnScreen) then
                 EspUtility:HideDrawing(Data)
