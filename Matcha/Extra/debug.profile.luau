@@ -25,6 +25,6 @@ function debug.profileend(Name: string)
         return
     end
 
-    print(`{Name} took {math.floor((os.clock() - Data.Start) * 1000)}ms to run.`)
+    print(`{Name} took {(os.clock() - Data.Start) * 1000}ms to run.`)
     debug.Data[Name] = nil
 end
